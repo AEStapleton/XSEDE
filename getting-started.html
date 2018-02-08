@@ -1,193 +1,58 @@
 <!DOCTYPE html>
 <html >
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+    font-family: "Lato", sans-serif;
+}
 
-<head>
+.sidenav {
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 20px;
+    left: 10px;
+    background: #eee;
+    overflow-x: hidden;
+    padding: 8px 0;
+}
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Superheat Vignette</title>
-  <meta name="description" content="This is the vignette for the superheat R package for making beautiful and customizable heatmaps.">
-  <meta name="generator" content="bookdown 0.3.8 and GitBook 2.6.7">
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #000000;
+    display: block;
+}
 
-  <meta property="og:title" content="Superheat Vignette" />
-  <meta property="og:type" content="book" />
-  
-  
-  <meta property="og:description" content="This is the vignette for the superheat R package for making beautiful and customizable heatmaps." />
-  <meta name="github-repo" content="rlbarter/superheat" />
+.sidenav a:hover {
+    color: #064579;
+}
 
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Superheat Vignette" />
-  
-  <meta name="twitter:description" content="This is the vignette for the superheat R package for making beautiful and customizable heatmaps." />
-  
+.main {
+    margin-left: 140px; /* Same width as the sidebar + left position in px */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
 
-<meta name="author" content="Rebecca Barter">
-
-
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  
-  
-<link rel="prev" href="basic-usage.html">
-<link rel="next" href="heatmap-colormap.html">
-
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
 </style>
-
 </head>
-
 <body>
 
 
 
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
+<div class="sidenav">
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Downloading and installing the package</a></li>
-<li class="chapter" data-level="2" data-path="basic-usage.html"><a href="basic-usage.html"><i class="fa fa-check"></i><b>2</b> Basic Usage</a><ul>
-<li class="chapter" data-level="2.1" data-path="basic-usage.html"><a href="basic-usage.html#heatmap-scale"><i class="fa fa-check"></i><b>2.1</b> Heatmap scale</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="ordering-rows-and-columns.html"><a href="ordering-rows-and-columns.html"><i class="fa fa-check"></i><b>3</b> Ordering rows and columns</a><ul>
-<li class="chapter" data-level="3.1" data-path="ordering-rows-and-columns.html"><a href="ordering-rows-and-columns.html#h-order"><i class="fa fa-check"></i><b>3.1</b> Using hierarchical clustering to order the rows/columns</a></li>
-<li class="chapter" data-level="3.2" data-path="ordering-rows-and-columns.html"><a href="ordering-rows-and-columns.html#specifying-the-ordering-of-the-columns-or-rows"><i class="fa fa-check"></i><b>3.2</b> Specifying the ordering of the columns or rows</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="heatmap-colormap.html"><a href="heatmap-colormap.html"><i class="fa fa-check"></i><b>4</b> Heatmap colormap</a><ul>
-<li class="chapter" data-level="4.1" data-path="heatmap-colormap.html"><a href="heatmap-colormap.html#heatmap-palette"><i class="fa fa-check"></i><b>4.1</b> Heatmap Palette</a></li>
-<li class="chapter" data-level="4.2" data-path="heatmap-colormap.html"><a href="heatmap-colormap.html#color-transitions"><i class="fa fa-check"></i><b>4.2</b> Color transitions</a></li>
-<li class="chapter" data-level="4.3" data-path="heatmap-colormap.html"><a href="heatmap-colormap.html#color-limits"><i class="fa fa-check"></i><b>4.3</b> Color limits</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="heatmap-colormap.html"><a href="heatmap-colormap.html#extreme-values"><i class="fa fa-check"></i><b>4.3.1</b> Extreme values</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="missing-data.html"><a href="missing-data.html"><i class="fa fa-check"></i><b>5</b> Missing data</a><ul>
-<li class="chapter" data-level="5.1" data-path="missing-data.html"><a href="missing-data.html#color"><i class="fa fa-check"></i><b>5.1</b> Color</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>6</b> Clustering</a><ul>
-<li class="chapter" data-level="6.1" data-path="clustering.html"><a href="clustering.html#dendrogram"><i class="fa fa-check"></i><b>6.1</b> Dendrogram</a></li>
-<li class="chapter" data-level="6.2" data-path="clustering.html"><a href="clustering.html#generate-clust"><i class="fa fa-check"></i><b>6.2</b> Generating clusters</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="clustering.html"><a href="clustering.html#extracting-the-clusters"><i class="fa fa-check"></i><b>6.2.1</b> Extracting the clusters</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="clustering.html"><a href="clustering.html#membership-vector"><i class="fa fa-check"></i><b>6.3</b> User-supplied clusters</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="titles.html"><a href="titles.html"><i class="fa fa-check"></i><b>7</b> Titles</a><ul>
-<li class="chapter" data-level="7.1" data-path="titles.html"><a href="titles.html#plot-title"><i class="fa fa-check"></i><b>7.1</b> Plot title</a></li>
-<li class="chapter" data-level="7.2" data-path="titles.html"><a href="titles.html#row-and-column-titles"><i class="fa fa-check"></i><b>7.2</b> Row and column titles</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="adjacent-plots.html"><a href="adjacent-plots.html"><i class="fa fa-check"></i><b>8</b> Adjacent plots</a><ul>
-<li class="chapter" data-level="8.1" data-path="adjacent-plots.html"><a href="adjacent-plots.html#scatterplot"><i class="fa fa-check"></i><b>8.1</b> Scatterplots</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="adjacent-plots.html"><a href="adjacent-plots.html#size"><i class="fa fa-check"></i><b>8.1.1</b> Size</a></li>
-<li class="chapter" data-level="8.1.2" data-path="adjacent-plots.html"><a href="adjacent-plots.html#color-1"><i class="fa fa-check"></i><b>8.1.2</b> Color</a></li>
-<li class="chapter" data-level="8.1.3" data-path="adjacent-plots.html"><a href="adjacent-plots.html#clustering-1"><i class="fa fa-check"></i><b>8.1.3</b> Clustering</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="adjacent-plots.html"><a href="adjacent-plots.html#line"><i class="fa fa-check"></i><b>8.2</b> Line plot</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="adjacent-plots.html"><a href="adjacent-plots.html#size-1"><i class="fa fa-check"></i><b>8.2.1</b> Size</a></li>
-<li class="chapter" data-level="8.2.2" data-path="adjacent-plots.html"><a href="adjacent-plots.html#color-2"><i class="fa fa-check"></i><b>8.2.2</b> Color</a></li>
-<li class="chapter" data-level="8.2.3" data-path="adjacent-plots.html"><a href="adjacent-plots.html#clustering-2"><i class="fa fa-check"></i><b>8.2.3</b> Clustering</a></li>
-</ul></li>
-<li class="chapter" data-level="8.3" data-path="adjacent-plots.html"><a href="adjacent-plots.html#smooth"><i class="fa fa-check"></i><b>8.3</b> Smoothed line</a><ul>
-<li class="chapter" data-level="8.3.1" data-path="adjacent-plots.html"><a href="adjacent-plots.html#loess-curve"><i class="fa fa-check"></i><b>8.3.1</b> Loess curve</a></li>
-<li class="chapter" data-level="8.3.2" data-path="adjacent-plots.html"><a href="adjacent-plots.html#linear-regression-line"><i class="fa fa-check"></i><b>8.3.2</b> Linear regression line</a></li>
-</ul></li>
-<li class="chapter" data-level="8.4" data-path="adjacent-plots.html"><a href="adjacent-plots.html#scatterline"><i class="fa fa-check"></i><b>8.4</b> Scatterplot with connecting line plot</a></li>
-<li class="chapter" data-level="8.5" data-path="adjacent-plots.html"><a href="adjacent-plots.html#scattersmooth"><i class="fa fa-check"></i><b>8.5</b> Scatterplot with smoothed line</a></li>
-<li class="chapter" data-level="8.6" data-path="adjacent-plots.html"><a href="adjacent-plots.html#bar"><i class="fa fa-check"></i><b>8.6</b> Barplot</a><ul>
-<li class="chapter" data-level="8.6.1" data-path="adjacent-plots.html"><a href="adjacent-plots.html#color-3"><i class="fa fa-check"></i><b>8.6.1</b> Color</a></li>
-<li class="chapter" data-level="8.6.2" data-path="adjacent-plots.html"><a href="adjacent-plots.html#clustering-3"><i class="fa fa-check"></i><b>8.6.2</b> Clustering</a></li>
-</ul></li>
-<li class="chapter" data-level="8.7" data-path="adjacent-plots.html"><a href="adjacent-plots.html#boxplot"><i class="fa fa-check"></i><b>8.7</b> Boxplot</a><ul>
-<li class="chapter" data-level="8.7.1" data-path="adjacent-plots.html"><a href="adjacent-plots.html#color-4"><i class="fa fa-check"></i><b>8.7.1</b> Color</a></li>
-</ul></li>
-<li class="chapter" data-level="8.8" data-path="adjacent-plots.html"><a href="adjacent-plots.html#axis"><i class="fa fa-check"></i><b>8.8</b> Axis options</a><ul>
-<li class="chapter" data-level="8.8.1" data-path="adjacent-plots.html"><a href="adjacent-plots.html#name"><i class="fa fa-check"></i><b>8.8.1</b> Name</a></li>
-<li class="chapter" data-level="8.8.2" data-path="adjacent-plots.html"><a href="adjacent-plots.html#size-2"><i class="fa fa-check"></i><b>8.8.2</b> Size</a></li>
-<li class="chapter" data-level="8.8.3" data-path="adjacent-plots.html"><a href="adjacent-plots.html#limits"><i class="fa fa-check"></i><b>8.8.3</b> Limits</a></li>
-</ul></li>
-<li class="chapter" data-level="8.9" data-path="adjacent-plots.html"><a href="adjacent-plots.html#plot-size"><i class="fa fa-check"></i><b>8.9</b> Plot size</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="adding-text.html"><a href="adding-text.html"><i class="fa fa-check"></i><b>9</b> Adding text</a><ul>
-<li class="chapter" data-level="9.1" data-path="adding-text.html"><a href="adding-text.html#text-color"><i class="fa fa-check"></i><b>9.1</b> Text color</a></li>
-<li class="chapter" data-level="9.2" data-path="adding-text.html"><a href="adding-text.html#font-size"><i class="fa fa-check"></i><b>9.2</b> Font size</a></li>
-<li class="chapter" data-level="9.3" data-path="adding-text.html"><a href="adding-text.html#text-angle"><i class="fa fa-check"></i><b>9.3</b> Text angle</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="labels.html"><a href="labels.html"><i class="fa fa-check"></i><b>10</b> Labels</a><ul>
-<li class="chapter" data-level="10.1" data-path="labels.html"><a href="labels.html#removing-the-labels"><i class="fa fa-check"></i><b>10.1</b> Removing the labels</a></li>
-<li class="chapter" data-level="10.2" data-path="labels.html"><a href="labels.html#label-size"><i class="fa fa-check"></i><b>10.2</b> Label size</a></li>
-<li class="chapter" data-level="10.3" data-path="labels.html"><a href="labels.html#label-color"><i class="fa fa-check"></i><b>10.3</b> Label color</a></li>
-<li class="chapter" data-level="10.4" data-path="labels.html"><a href="labels.html#label-text-size"><i class="fa fa-check"></i><b>10.4</b> Text size</a></li>
-<li class="chapter" data-level="10.5" data-path="labels.html"><a href="labels.html#text-color-1"><i class="fa fa-check"></i><b>10.5</b> Text color</a></li>
-<li class="chapter" data-level="10.6" data-path="labels.html"><a href="labels.html#text-angle-1"><i class="fa fa-check"></i><b>10.6</b> Text angle</a></li>
-<li class="chapter" data-level="10.7" data-path="labels.html"><a href="labels.html#text-alignment"><i class="fa fa-check"></i><b>10.7</b> Text alignment</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="grid-aesthetics.html"><a href="grid-aesthetics.html"><i class="fa fa-check"></i><b>11</b> Grid aesthetics</a><ul>
-<li class="chapter" data-level="11.1" data-path="grid-aesthetics.html"><a href="grid-aesthetics.html#removing-the-grid"><i class="fa fa-check"></i><b>11.1</b> Removing the grid</a></li>
-<li class="chapter" data-level="11.2" data-path="grid-aesthetics.html"><a href="grid-aesthetics.html#grid-color"><i class="fa fa-check"></i><b>11.2</b> Grid color</a></li>
-<li class="chapter" data-level="11.3" data-path="grid-aesthetics.html"><a href="grid-aesthetics.html#grid-size"><i class="fa fa-check"></i><b>11.3</b> Grid size</a></li>
-<li class="chapter" data-level="11.4" data-path="grid-aesthetics.html"><a href="grid-aesthetics.html#clustered-grid"><i class="fa fa-check"></i><b>11.4</b> Clustered grid</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="legend.html"><a href="legend.html"><i class="fa fa-check"></i><b>12</b> Legend</a><ul>
-<li class="chapter" data-level="12.1" data-path="legend.html"><a href="legend.html#removing-the-legend"><i class="fa fa-check"></i><b>12.1</b> Removing the legend</a></li>
-<li class="chapter" data-level="12.2" data-path="legend.html"><a href="legend.html#size-3"><i class="fa fa-check"></i><b>12.2</b> Size</a></li>
-<li class="chapter" data-level="12.3" data-path="legend.html"><a href="legend.html#legend-breaks"><i class="fa fa-check"></i><b>12.3</b> Legend breaks</a></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="smoothing-in-high-dimensions.html"><a href="smoothing-in-high-dimensions.html"><i class="fa fa-check"></i><b>13</b> Smoothing in high dimensions</a></li>
-<li class="chapter" data-level="14" data-path="saving-superheatmaps.html"><a href="saving-superheatmaps.html"><i class="fa fa-check"></i><b>14</b> Saving superheatmaps</a></li>
-<li class="chapter" data-level="15" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>15</b> Conclusion</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Why XSEDE?</a></li>
+<li class="chapter" data-level="2" data-path="high-speed-computing-resources.html"><a href="high-speed-computing-resources"><i class="fa fa-check"></i><b>2</b> High-speed Computing Resources</a>
+<li class="chapter" data-level="3" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>3</b> Getting Started</a></li>
+</li>
 </ul>
+</div>
 
       </nav>
     </div>
@@ -196,7 +61,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Superheat Vignette</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">XSEDE Information</a>
           </h1>
         </div>
 
@@ -204,91 +69,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ordering-rows-and-columns" class="section level1">
-<h1><span class="header-section-number">Chapter 3</span> Ordering rows and columns</h1>
-<p>By default, the rows and columns are ordered as in the original input.</p>
-<div id="h-order" class="section level2">
-<h2><span class="header-section-number">3.1</span> Using hierarchical clustering to order the rows/columns</h2>
-<p>You can set the ordering of the rows/columns based on a “pretty” hierarchical clustering by specifying <code>pretty.order.rows = TRUE</code> and <code>pretty.order.cols = TRUE</code>. Errors may arise when the matrix has missing values.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># generate the plot:</span>
-<span class="kw">superheat</span>(mtcars,
-          <span class="co"># retain original order of rows/cols</span>
-          <span class="dt">pretty.order.rows =</span> <span class="ot">TRUE</span>,
-          <span class="dt">pretty.order.cols =</span> <span class="ot">TRUE</span>,
-          <span class="co"># scale the matrix columns</span>
-          <span class="dt">scale =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<p><img src="superheat-vignette_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div id="header">
+<h1 class="title">XSEDE</h1>
+<h4 class="author"><em>UNCW XSEDE</em></h4>
 </div>
-<div id="specifying-the-ordering-of-the-columns-or-rows" class="section level2">
-<h2><span class="header-section-number">3.2</span> Specifying the ordering of the columns or rows</h2>
-<p>If, instead, you would like to specify a custom ordering of the rows and columns, you can simply provide the order vector to the <code>order.rows</code> and <code>order.cols</code> arguments. In the example below, we order the rows by the <code>mpg</code> variable from the original matrix. Note that we could order by any vector i.e. we are not restricted to ordering by a column or row in our matrix.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># generate the plot:</span>
-<span class="kw">superheat</span>(mtcars,
-          <span class="co"># order the rows by miles per gallon</span>
-          <span class="dt">order.rows =</span> <span class="kw">order</span>(mtcars$mpg),
-          <span class="co"># scale the matrix columns</span>
-          <span class="dt">scale =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<p><img src="superheat-vignette_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div id="Introduction" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Why XSEDE?</h1>
+<p>You must submit an application before you can access the full suite of XSEDE resources.Contact Eddie Dunn [dunng@uncw.edu], the UNCW campus champion, to learn more or to request access to a trial allocation to see if XSEDE is right for your project. A user account, which is required to begin the application process, can be made at <a href ="https://portal.xsede.org/"> </a>.
 
+</p>
 </div>
-</div>
-            </section>
-
-          </div>
-        </div>
-      </div>
-<a href="basic-usage.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="heatmap-colormap.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
-  </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script>
-require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"google": false,
-"weibo": false,
-"instapper": false,
-"vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"download": ["superheat-vignette.pdf"],
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
+</section>
 </body>
 
 </html>
