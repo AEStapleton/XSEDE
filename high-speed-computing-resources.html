@@ -1,38 +1,59 @@
-<html>
+<!DOCTYPE html>
+<html >
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+    width: 175px;
+    position: fixed;
+    z-index: 1;
+    top: 20px;
+    left: 10px;
+    background: #eee;
+    overflow-x: hidden;
+    padding: 8px 0;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #000000;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #064579;
+}
+
+.main {
+    margin-left: 185px; /* Same width as the sidebar + left position in px */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
 <body>
-<div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
 
-    <div class="book-summary">
-      <nav role="navigation">
 
-<ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Why XSEDE?</a></li>
-<li class="chapter" data-level="2" data-path="high-speed-computing-resources.html"><a href="high-speed-computing-resources.html"><i class="fa fa-check"></i><b>2</b> High-speed Computing Resources</a>
-<li class="chapter" data-level="3" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>3</b> Getting Started</a></li>
-</li>
-</ul>
 
-      </nav>
-    </div>
-
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">XSEDE Information</a>
-          </h1>
-        </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">XSEDE</h1>
-<h4 class="author"><em>UNCW XSEDE</em></h4>
+<div class="sidenav">
+<a href="index.html">Why XSEDE?</a>
+<a href="high-speed-computing-resources"> High-speed Computing Resources</a>
+<a href="getting-started.html">Getting Started</a>
 </div>
-<div id="Introduction" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Why XSEDE?</h1>
+
+
+<div class="main">
+<h2 class="title">High-Speed Computing Resources</h2>
 <p>XSEDE integrates a network of supercomputer and data-analysis resources for scientific research, providing cloud computing for scholars similar to a variety of commercial options such as AWS. Unlike other cloud services however, XSEDE is funded by a $110-million grant from the National Science Foundation, is free to use, and provides support, functionality, and a community of users oriented towards academic research needs.
 </p>
 <p>
