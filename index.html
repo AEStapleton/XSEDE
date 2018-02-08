@@ -41,31 +41,6 @@ body {
     .sidenav a {font-size: 18px;}
 }
 </style>
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script src="http://www.google.com/uds/solutions/dynamicfeed/gfdynamicfeedcontrol.js"
-type="text/javascript"></script>
-
-<style type="text/css">
-@import url("http://www.google.com/uds/solutions/dynamicfeed/gfdynamicfeedcontrol.css");
-
-#feedControl {
-margin-top : 10px;
-margin-left: auto;
-margin-right: auto;
-width : 440px;
-font-size: 12px;
-color: #9CADD0;
-}
-</style>
-<script type="text/javascript">
-function load() {
-var feed ="feed:https://www.xsede.org/news/user-news/-/news/feeds/rss?controlPanelCategory=portlet_usernews_WAR_usernewsportlet";
-new GFdynamicFeedControl(feed, "feedControl");
-
-}
-google.load("feeds", "1");
-google.setOnLoadCallback(load);
-</script>
 </head>
 <body>
 
@@ -90,10 +65,10 @@ While a non-networked lab might run analytics jobs on desktop computers while tr
 In addition to the services offered on-site through ITS, researchers are encouraged to contact the UNCW Campus Champion to learn more about how XSEDE could make their research easier.
 </p>
 
+<p>
+<script src="//rss.bloople.net/?url=https%3A%2F%2Fwww.xsede.org%2Fnews%2Fuser-news%2F-%2Fnews%2Ffeeds%2Frss%3FcontrolPanelCategory%3Dportlet_usernews_WAR_usernewsportlet&detail=100&showtitle=false&type=js"></script>
+</p>
 
-</div>
-<div id="body">
-<div id="feedControl">Loading...</div>
 </div>
 </body>
 </html>
