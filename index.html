@@ -29,6 +29,7 @@ body {
     color: #064579;
 }
 
+
 .main {
     margin-left: 185px; /* Same width as the sidebar + left position in px */
     margin-right: 50px;
@@ -40,6 +41,36 @@ body {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
+
+.myBox {
+border: none;
+padding: 5px;
+font: 24px/36px sans-serif;
+width: 200px;
+height: 200px;
+overflow: scroll;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+width: 12px;
+height: 12px;
+}
+
+::-webkit-scrollbar-track {
+border: 1px solid yellowgreen;
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+background: yellowgreen;  
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: #88ba1c;  
+}
+
 </style>
 </head>
 <body>
@@ -66,7 +97,9 @@ In addition to the services offered on-site through ITS, researchers are encoura
 </p>
 
 <p>
+<div class="myBox">
 <script src="//rss.bloople.net/?url=https%3A%2F%2Fwww.xsede.org%2Fnews%2Fuser-news%2F-%2Fnews%2Ffeeds%2Frss%3FcontrolPanelCategory%3Dportlet_usernews_WAR_usernewsportlet&detail=100&showtitle=false&type=js"></script>
+</div>
 </p>
 
 </div>
