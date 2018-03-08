@@ -31,7 +31,7 @@ body {
 
 .main {
     margin-left: 185px; /* Same width as the sidebar + left position in px */
-    margin-right: 50px;
+    margin-right: 360px;
     font-size: 28px; /* Increased text to enable scrolling */
     padding: 0px 10px;
 }
@@ -40,6 +40,42 @@ body {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
+
+.myBox {
+border: none;
+padding: 5px;
+font: 16px/20px sans-serif;
+width: 350px;
+height: 600px;
+overflow: scroll;
+top: 20px;
+right: 10px;
+padding: 8px 0;
+position: fixed;
+background: #eee
+border:2px solid lightgray;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+width: 12px;
+height: 12px;
+}
+
+::-webkit-scrollbar-track {
+border: 1px solid lightgrey;
+border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+background: solid lightgray;  
+border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: #88ba1c;  
+}
+
 </style>
 </head>
 <body>
@@ -59,7 +95,9 @@ body {
 <p>You must submit an application before you can access the full suite of XSEDE resources.Contact Eddie Dunn [dunng@uncw.edu], the UNCW campus champion, to learn more or to request access to a trial allocation to see if XSEDE is right for your project. A user account, which is required to begin the application process, can be <a href ="https://portal.xsede.org/"> made at </a>.
 </p>
 <p>
+<div class="myBox">
 <script src="//rss.bloople.net/?url=https%3A%2F%2Fwww.xsede.org%2Fnews%2Fuser-news%2F-%2Fnews%2Ffeeds%2Frss%3FcontrolPanelCategory%3Dportlet_usernews_WAR_usernewsportlet&detail=100&showtitle=false&type=js"></script>
+</div>
 </p>
 </div>
 </body>
